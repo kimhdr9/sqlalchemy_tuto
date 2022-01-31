@@ -1,3 +1,4 @@
+from ast import Str
 from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column,String,Integer,DateTime
 from datetime import datetime
@@ -30,6 +31,7 @@ class User(Base):
     username=Column(String(80),nullable=False,unique=True) 
     email=Column(String(80),nullable=False,unique=True) 
     date_created=Column(DateTime(),default=datetime.utcnow())
+    telephone=Column(String(10))
 
     def __str__(self) -> str:
         return f'{self.username} - {self.email}' 

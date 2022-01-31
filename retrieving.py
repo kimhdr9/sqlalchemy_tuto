@@ -15,6 +15,7 @@ for u in users :
 # mise à jour des adresses mails
 
 for u in users :
+    # nouvelle adresse mail
     new_email=u.email.replace('mail.com','free.fr')
     u.email=new_email
     local_session.commit()
