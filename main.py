@@ -1,4 +1,4 @@
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 from sqlalchemy import Column,String,Integer,DateTime
 from datetime import datetime
 from sqlalchemy import create_engine
@@ -13,15 +13,16 @@ section='postgresql'
 
 database=config(filename,section)
 '''
-chaine de connection : fonctionne sans le n° du port voir le fichier create_db
+chaine de connection : fonctionne sans le n° du port voir le fichier create_db.py
 '''
 string_connection='postgresql+psycopg2://'+database['user']+':'+database['password']+'@'+database['host']+'/'+database['name']
 '''
 moteur de connexion
 '''
-engine = create_engine(string_connection,echo=True)
-
 Base = declarative_base()
+engine = create_engine(string_connection,echo=True)
+Session = sessionmaker()
+
 
 class User(Base):
     __tablename__='users'
